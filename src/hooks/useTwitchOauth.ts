@@ -66,7 +66,10 @@ function useTwitchOauth() {
       const data = JSON.parse(event.data);
 
       if (isWsConnectedRef.current) {
-        if (data.metadata.subscription_type === "channel.chat.message") {
+        // channel.read.redemptions
+        // channel.chat.message
+        if (data.metadata.subscription_type === "channel.read.redemptions") {
+          
           const newMsg = data.payload;
 
           onMessage && onMessage(newMsg);
